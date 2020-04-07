@@ -60,11 +60,11 @@
     /* box with rounded corner */
     border: 1px solid #999;
     background: #EEE;
-    padding: 16px 12px 0px 12px;
+    padding: 8px 12px 0px 12px;
     border-radius: 4px 4px 0 0;
     position: relative;
     top: 1px;
-    height: 40px;
+    height: 32px;
     width: 110px;
     text-align: center;
     font-size: 1.25rem;
@@ -90,7 +90,7 @@
 .tabtrigger-input {
     display: inline-block;
     width: 48%;
-    height: 40px;
+    height: 32px;
     margin-bottom: 4px;
 }
 
