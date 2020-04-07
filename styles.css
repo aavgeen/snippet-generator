@@ -1,0 +1,117 @@
+.snippet-maker {
+    text-emphasis: center;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    padding-top: 8vh;
+    min-height: 92vh;
+    max-width: 1440px;
+}
+
+.input-section,
+.output-section {
+    width: 50%;
+    display: block;
+    margin: 0 8px;
+}
+
+.texteditor-radio {
+    display: none;
+}
+
+
+/* hide radio buttons */
+
+.texteditor-radio+label {
+    display: inline-block;
+}
+
+
+/* show labels in line */
+
+.tab {
+    display: none
+}
+
+
+/* hide contents */
+
+#vscode:checked:after,
+#sublime:checked,
+#atom:checked {
+    background-color: blue;
+    color: white
+}
+
+
+/* show contents only for selected tab */
+
+#vscode:checked~.result-area-vscode,
+#sublime:checked~.result-area-sublime,
+#atom:checked~.result-area-atom {
+    display: block;
+}
+
+.texteditor-radio+label {
+    /* box with rounded corner */
+    border: 1px solid #999;
+    background: #EEE;
+    padding: 16px 12px 0px 12px;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    top: 1px;
+    height: 40px;
+    width: 110px;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.texteditor-radio+label {
+    cursor: pointer;
+}
+
+.texteditor-radio:checked+label {
+    /* white background for selected tab */
+    background: #FFF;
+    border-bottom: 1px solid transparent;
+}
+
+.texteditor-radio~.tab {
+    /* grey line between tab and contents */
+    border-top: 1px solid #999;
+    padding: 12px;
+}
+
+.desc-input,
+.tabtrigger-input {
+    display: inline-block;
+    width: 48%;
+    height: 40px;
+    margin-bottom: 4px;
+}
+
+.snippet-area {
+    height: 100%;
+    width: 100%;
+}
+
+.tab {
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .input-section,
+    .output-section {
+        width: 100%;
+        display: block;
+        margin: 0 8px;
+    }
+}

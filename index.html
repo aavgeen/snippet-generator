@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <title>Pure JS Snippet Generator</title>
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="js/main.js"></script>
+</head>
+
+<body class="snippet-maker">
+    <div class="container">
+        <section class="input-section">
+            <input type="text" id="description-textbox" class="desc-input" placeholder="Description..." />
+            <input type="text" id="tabtrigger-textbox" class="tabtrigger-input" placeholder="Tab trigger.." />
+            <textarea class="snippet-area" id="snippet-area" placeholder="Your Snippet.."></textarea>
+        </section>
+        <!-- === -->
+        <section class="output-section">
+            <input type="radio" id="vscode" name="texteditor" value="VSCode" class="texteditor-radio" checked="checked">
+            <label for="vscode">VS Code</label>
+            <input type="radio" id="sublime" name="texteditor" value="SublimeText" class="texteditor-radio">
+            <label for="sublime">Sublime Text</label>
+            <input type="radio" id="atom" name="texteditor" value="Atom" class="texteditor-radio">
+            <label for="atom">Atom</label>
+
+
+            <textarea class="tab result-area-vscode"></textarea>
+            <textarea class="tab result-area-sublime"></textarea>
+            <textarea class="tab result-area-atom"></textarea>
+        </section>
+    </div>
+</body>
+
+</html>
