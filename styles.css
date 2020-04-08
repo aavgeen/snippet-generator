@@ -1,127 +1,146 @@
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.snippet-maker {
-    max-width: 1440px;
-    width: 100%;
-}
-
-header {
-    align-self: flex-start;
-    margin: 2rem 0rem;
-    font-size: 2rem;
-}
-
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    min-height: 84vh;
-    width: 100%;
-}
-
-.input-section,
-.output-section {
-    width: 50%;
-    display: block;
-    margin: 0 8px;
-}
-
-.texteditor-radio {
-    display: none;
-}
-
-
-/* hide radio buttons */
-
-.texteditor-radio+label {
-    display: inline-block;
-}
-
-
-/* hide contents */
-
-#vscode:checked:after,
-#sublime:checked,
-#atom:checked {
-    background-color: blue;
-    color: white
-}
-
-
-/* show contents only for selected tab */
-
-#vscode:checked~.result-area-vscode,
-#sublime:checked~.result-area-sublime,
-#atom:checked~.result-area-atom {
-    display: block;
-}
-
-.texteditor-radio+label {
-    border: 1px solid #999;
-    background: #EEE;
-    padding: 8px 12px 0px 12px;
-    border-radius: 4px 4px 0 0;
-    position: relative;
-    top: 1px;
-    height: 32px;
-    width: 110px;
-    text-align: center;
-    font-size: 1.25rem;
-}
-
-.texteditor-radio+label {
-    cursor: pointer;
-}
-
-.texteditor-radio:checked+label {
-    background: #FFF;
-    border-bottom: 1px solid transparent;
-}
-
-.texteditor-radio~.tab {
-    border-top: 1px solid #999;
-}
-
-.desc-input,
-.tabtrigger-input {
-    display: inline-block;
-    width: 48%;
-    height: 32px;
-    margin-bottom: 4px;
-}
-
-.snippet-area {
-    height: 100%;
-    width: 100%;
-    padding: 16px;
-    line-height: 2rem;
-}
-
-.tab {
-    height: 100%;
-    width: 100%;
-    display: none;
-}
-
-.snippet-area,
-.tab {
-    padding: 16px;
-    line-height: 2rem;
-    font-size: 1rem;
-}
-
-@media screen and (max-width: 768px) {
-    .container {
-        flex-direction: column;
+    html {
+        --main-theme-color: #026EC5;
     }
+    
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--main-theme-color);
+    }
+    
+    .snippet-maker {
+        max-width: 1440px;
+        width: 100%;
+    }
+    
+    header {
+        align-self: flex-start;
+        margin: 2rem 0rem;
+        font-size: 2rem;
+        color: white;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        min-height: 84vh;
+        width: 100%;
+    }
+    
     .input-section,
     .output-section {
-        width: 100%;
+        width: 50%;
         display: block;
         margin: 0 8px;
+        padding: 4px;
+        border: 1px solid gray;
+        background-color: #FFFFFF55
     }
-}
+    
+    .texteditor-radio {
+        display: none;
+    }
+    /* hide contents */
+    
+    #vscode_toggle:checked:after,
+    #sublime_toggle:checked,
+    #atom_toggle:checked {
+        background-color: blue;
+        color: white
+    }
+    /* show contents only for selected tab */
+    
+    #vscode_toggle:checked~.result-area-vscode,
+    #sublime_toggle:checked~.result-area-sublime,
+    #atom_toggle:checked~.result-area-atom {
+        display: block;
+    }
+    
+    .texteditor-radio+label {
+        display: inline-block;
+        border: 1px solid #999;
+        background-color: rgb(176, 193, 208);
+        padding: 8px 8px 0px 8px;
+        border-radius: 4px 4px 0 0;
+        position: relative;
+        top: 1px;
+        height: 32px;
+        text-align: center;
+        font-size: 1.25rem;
+        width: 30%;
+        color: white;
+    }
+    
+    .texteditor-radio+label {
+        cursor: pointer;
+    }
+    
+    .texteditor-radio:checked+label {
+        border-bottom: 1px solid transparent;
+        background-color: var(--main-theme-color);
+    }
+    
+    .texteditor-radio~.tab {
+        border-top: 1px solid #999;
+    }
+    
+    .desc-input,
+    .tabtrigger-input {
+        display: inline-block;
+        width: 48%;
+        height: 32px;
+        margin-bottom: 4px;
+    }
+    
+    .snippet-area {
+        height: 100%;
+        width: 100%;
+        padding: 16px;
+        line-height: 2rem;
+    }
+    
+    .tab {
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
+    
+    .snippet-area,
+    .tab-edit {
+        padding: 16px;
+        line-height: 2rem;
+        font-size: 1rem;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .snippet-result-container {
+        position: relative;
+        border: 1px solid #ddd;
+    }
+    
+    .snippet-result-container .copy-snippet-button {
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        height: 3rem;
+        width: 8rem;
+        color: white;
+        background-color: var(--main-theme-color);
+        border: 0px solid transparent;
+        border-radius: 0.75rem;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+        .input-section,
+        .output-section {
+            width: 100%;
+            display: block;
+            margin: 0 8px;
+        }
+    }

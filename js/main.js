@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+            var html = document.getElementsByTagName('html')[0];
             var description_textbox = document.getElementById("description-textbox");
             var tabtrigger_textbox = document.getElementById("tabtrigger-textbox");
             var snippet_area = document.getElementById("snippet-area");
@@ -6,6 +7,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
             const vscode_snippet = document.getElementById("vscode-snippet");
             const sublime_snippet = document.getElementById("sublime-snippet");
             const atom_snippet = document.getElementById("atom-snippet");
+
+            const vscode_toggle = document.getElementById('vscode_toggle');
+            const sublime_toggle = document.getElementById('sublime_toggle');
+            const atom_toggle = document.getElementById('atom_toggle');
 
             function changeSnippetValue(event) {
                 changeVsCodeValue(event);
@@ -22,8 +27,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ${getFormattedSnippet(snippet_lines, true)}
       ],
       "description": "${description_textbox.value}"
-  }
-  `;
+  }`;
                 vscode_snippet.value = snippet;
             }
 
@@ -39,8 +43,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         <description>${description_textbox.value}</description>
         <!-- Optional: Set a scope to limit where the snippet will trigger -->
         <!-- <scope >source.python</scope > -->
-      </snippet>
-         `;
+      </snippet>`;
                 sublime_snippet.value = snippet;
             }
 
@@ -73,6 +76,36 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     snippet_area.setSelectionRange(selectionStart + 2, selectionStart + 2)
                 }
             });
+            let radios = [vscode_toggle, sublime_toggle, atom_toggle];
+            radios.forEach((radio) => {
+                radio.addEventListener('click', (event) => {
+                    if (event.target.value === "VSCode") {
+                        html.setAttribute("style", "--main-theme-color: #026EC5");
+                    } else if (event.target.value === "SublimeText") {
+                        html.setAttribute("style", "--main-theme-color: #c48f4e");
+                    } else if (event.target.value === "Atom") {
+                        html.setAttribute("style", "--main-theme-color: #66595C");
+                    }
+                })
+            });
+            console.log(document.querySelectorAll('.copy-snippet-button'))
+            Array.from(document.querySelectorAll('.copy-snippet-button')).forEach((btn) => {
+                console.log("GOTOT")
+                btn.addEventListener('click', (event) => {
+                    console.log(event)
+                    let editor = event.target.getAttribute('data-editor');
+                    if (editor == 'vscode') {
+                        vscode_snippet.select();
+                        document.execCommand('copy');
+                    } else if (editor == 'sublime') {
+                        sublime_snippet.select();
+                        document.execCommand('copy');
+                    } else if (editor == 'atom') {
+                        atom_snippet.select();
+                        document.execCommand('copy');
+                    }
+                })
+            })
 
             function getFormattedSnippet(snippet_text, hasQuotes) {
                 if (hasQuotes) {

@@ -41,15 +41,25 @@
             </section>
             <!-- === -->
             <section class="output-section">
-                <input type="radio" id="vscode" name="texteditor" value="VSCode" class="texteditor-radio" checked="checked">
-                <label for="vscode">VS Code</label>
-                <input type="radio" id="sublime" name="texteditor" value="SublimeText" class="texteditor-radio">
-                <label for="sublime">Sublime Text</label>
-                <input type="radio" id="atom" name="texteditor" value="Atom" class="texteditor-radio">
-                <label for="atom">Atom</label>
-                <textarea class="tab result-area-vscode" id="vscode-snippet" readonly></textarea>
-                <textarea class="tab result-area-sublime" id="sublime-snippet" readonly></textarea>
-                <textarea class="tab result-area-atom" id="atom-snippet" readonly></textarea>
+                <input type="radio" id="vscode_toggle" name="texteditor-toggle" value="VSCode" class="texteditor-radio" checked="checked">
+                <label for="vscode_toggle">VS Code</label>
+                <input type="radio" id="sublime_toggle" name="texteditor-toggle" value="SublimeText" class="texteditor-radio">
+                <label for="sublime_toggle">Sublime Text</label>
+                <input type="radio" id="atom_toggle" name="texteditor-toggle" value="Atom" class="texteditor-radio">
+                <label for="atom_toggle">Atom</label>
+                <div class="tab snippet-result-container result-area-vscode">
+                    <input type="button" value="Copy Snippet" class="copy-snippet-button" data-editor="vscode">
+                    <textarea class="tab-edit" id="vscode-snippet" readonly>
+                    </textarea>
+                </div>
+                <div class="tab snippet-result-container result-area-sublime">
+                    <input type="button" value="Copy Snippet" class="copy-snippet-button" data-editor="sublime">
+                    <textarea class="tab-edit" id="sublime-snippet" readonly></textarea>
+                </div>
+                <div class="tab snippet-result-container result-area-atom">
+                    <input type="button" value="Copy Snippet" class="copy-snippet-button" data-editor="atom">
+                    <textarea class="tab-edit" id="atom-snippet" readonly></textarea>
+                </div>
             </section>
         </div>
 </body>
