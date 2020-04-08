@@ -14,25 +14,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
 
             function changeVsCodeValue(event) {
-                // console.log(event)
+                let snippet_lines = snippet_area.value.split("\n");
                 let snippet = `
   "${description_textbox.value}": {
       "prefix": "${tabtrigger_textbox.value}",
       "body": [
-          ${snippet_area.value.split("\n").map((val) => `"${val}",\n`)}
+        ${getFormattedSnippet(snippet_lines, true)}
       ],
       "description": "${description_textbox.value}"
   }
   `;
-      vscode_snippet.value = snippet;
-    }
-  
-    function changeSublimeValue(event) {
-      // console.log(event)
-      let snippet = `
+                vscode_snippet.value = snippet;
+            }
+
+            function changeSublimeValue(event) {
+
+                let snippet_lines = snippet_area.value.split("\n");
+                let snippet = `
       <snippet>
-      <content><![CDATA[
-              ${snippet_area.value}
+        <content><![CDATA[
+        ${getFormattedSnippet(snippet_lines, false)}
         ]]></content>
         <tabTrigger>${tabtrigger_textbox.value}</tabTrigger>
         <description>${description_textbox.value}</description>
@@ -40,23 +41,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
         <!-- <scope >source.python</scope > -->
       </snippet>
          `;
-      sublime_snippet.value = snippet;
-    }
-  
-    function changeAtomValue(event) {
-      // console.log(event)
-      let snippet = `
+                sublime_snippet.value = snippet;
+            }
+
+            function changeAtomValue(event) {
+
+                let snippet_lines = snippet_area.value.split("\n");
+                let snippet = `
   '${description_textbox.value}': 
   'prefix': '${tabtrigger_textbox.value}'
   'body': """
-  ${snippet_area.value}
-  """`;
-      atom_snippet.value = snippet;
-    }
-  
-    description_textbox.addEventListener("input", changeSnippetValue);
-    tabtrigger_textbox.addEventListener("input", changeSnippetValue);
-    snippet_area.addEventListener("input", changeSnippetValue);
-  
-    changeSnippetValue();
+        ${getFormattedSnippet(snippet_lines, false)}
+    """`;
+                atom_snippet.value = snippet;
+            }
+
+            description_textbox.addEventListener("input", changeSnippetValue);
+            tabtrigger_textbox.addEventListener("input", changeSnippetValue);
+            snippet_area.addEventListener("input", changeSnippetValue);
+
+            changeSnippetValue();
+            snippet_area.addEventListener("keydown", (e) => {
+                let { keyCode } = e;
+                let { value, selectionStart, selectionEnd } = snippet_area;
+
+                if (keyCode === 9) { // TAB = 9
+                    e.preventDefault();
+
+                    snippet_area.value = value.slice(0, selectionStart) + "\t" + value.slice(selectionEnd);
+
+                    snippet_area.setSelectionRange(selectionStart + 2, selectionStart + 2)
+                }
+            });
+
+            function getFormattedSnippet(snippet_text, hasQuotes) {
+                if (hasQuotes) {
+                    return `"${snippet_text[0]}",
+        ${snippet_text.slice(1).map((val) => `\t"${val}"`).join(',\n')}`
+          }
+
+            return ` ${snippet_text[0]}
+        ${snippet_text.slice(1).map((val) => `\t${val}`).join('\n')}`;
+      }
   });

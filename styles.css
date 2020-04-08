@@ -1,15 +1,26 @@
-.snippet-maker {
-    text-emphasis: center;
+body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.snippet-maker {
+    max-width: 1440px;
+    width: 100%;
+}
+
+header {
+    align-self: flex-start;
+    margin: 2rem 0rem;
+    font-size: 2rem;
 }
 
 .container {
     display: flex;
     flex-direction: row;
-    padding-top: 8vh;
-    min-height: 92vh;
-    max-width: 1440px;
+    justify-content: center;
+    min-height: 84vh;
+    width: 100%;
 }
 
 .input-section,
@@ -28,13 +39,6 @@
 
 .texteditor-radio+label {
     display: inline-block;
-}
-
-
-/* show labels in line */
-
-.tab {
-    display: none
 }
 
 
@@ -57,7 +61,6 @@
 }
 
 .texteditor-radio+label {
-    /* box with rounded corner */
     border: 1px solid #999;
     background: #EEE;
     padding: 8px 12px 0px 12px;
@@ -75,15 +78,12 @@
 }
 
 .texteditor-radio:checked+label {
-    /* white background for selected tab */
     background: #FFF;
     border-bottom: 1px solid transparent;
 }
 
 .texteditor-radio~.tab {
-    /* grey line between tab and contents */
     border-top: 1px solid #999;
-    padding: 12px;
 }
 
 .desc-input,
@@ -97,11 +97,21 @@
 .snippet-area {
     height: 100%;
     width: 100%;
+    padding: 16px;
+    line-height: 2rem;
 }
 
 .tab {
     height: 100%;
     width: 100%;
+    display: none;
+}
+
+.snippet-area,
+.tab {
+    padding: 16px;
+    line-height: 2rem;
+    font-size: 1rem;
 }
 
 @media screen and (max-width: 768px) {
