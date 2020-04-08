@@ -1,3 +1,6 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0-modified | 20110126
    License: none (public domain)
@@ -156,7 +159,6 @@ input[type=search] {
     -webkit-appearance: none;
     -moz-appearance: none;
     -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
 
@@ -388,6 +390,7 @@ html input[disabled] {
 
 input[type="checkbox"],
 input[type="radio"] {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     /* 1 */
     padding: 0;
@@ -408,7 +411,6 @@ input[type="radio"] {
 input[type="search"] {
     -webkit-appearance: textfield;
     /* 1 */
-    -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
     /* 2 */
     box-sizing: content-box;
