@@ -91,9 +91,6 @@ video {
     font: inherit;
     vertical-align: baseline;
     -moz-appearance: none;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
 }
 
 

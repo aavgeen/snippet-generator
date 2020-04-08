@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             var description_textbox = document.getElementById("description-textbox");
             var tabtrigger_textbox = document.getElementById("tabtrigger-textbox");
             var snippet_area = document.getElementById("snippet-area");
-
+            var mode = 'vscode';
             const vscode_snippet = document.getElementById("vscode-snippet");
             const sublime_snippet = document.getElementById("sublime-snippet");
             const atom_snippet = document.getElementById("atom-snippet");
@@ -12,10 +12,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
             const sublime_toggle = document.getElementById('sublime_toggle');
             const atom_toggle = document.getElementById('atom_toggle');
 
+            function changeurl() {
+                let new_url = `/?description=${description_textbox.value}&tabtrigger=${tabtrigger_textbox.value}&snippet=${encodeURIComponent(snippet_area.value)}&mode=${mode}`
+                window.history.pushState('data', 'Title', new_url);
+            }
+
             function changeSnippetValue(event) {
                 changeVsCodeValue(event);
                 changeSublimeValue(event);
                 changeAtomValue(event);
+                changeurl();
             }
 
             function changeVsCodeValue(event) {
@@ -81,11 +87,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 radio.addEventListener('click', (event) => {
                     if (event.target.value === "VSCode") {
                         html.setAttribute("style", "--main-theme-color: #026EC5");
+                        mode = 'vscode'
                     } else if (event.target.value === "SublimeText") {
                         html.setAttribute("style", "--main-theme-color: #c48f4e");
+                        mode = "sublimetext"
                     } else if (event.target.value === "Atom") {
                         html.setAttribute("style", "--main-theme-color: #66595C");
+                        mode = "atom"
                     }
+                    changeurl();
                 })
             });
             console.log(document.querySelectorAll('.copy-snippet-button'))
